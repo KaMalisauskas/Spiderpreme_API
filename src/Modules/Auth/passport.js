@@ -2,7 +2,7 @@ import passport from "passport"
 import LocalStategy from "passport-local"
 import { Strategy as JWTStrategy, ExtractJwt} from "passport-jwt"
 import UserModel  from "./UserModel"
-import config from "../../../config.json"
+// import config from "../../../config.json"
 
 const localLogin = new LocalStategy(async (username, password, done) => {
     try{
@@ -17,7 +17,8 @@ const localLogin = new LocalStategy(async (username, password, done) => {
 
 const jwtOpt = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("JWT"),
-    secretOrKey: process.env.secret || config.passport.secret
+    secretOrKey: process.env.secret
+    // || config.passport.secret
 }
 
 const authLogin = new JWTStrategy(jwtOpt, async (payload, done) => {
