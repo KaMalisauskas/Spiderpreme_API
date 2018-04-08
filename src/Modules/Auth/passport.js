@@ -17,7 +17,7 @@ const localLogin = new LocalStategy(async (username, password, done) => {
 
 const jwtOpt = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("JWT"),
-    secretOrKey: config.passport.secret
+    secretOrKey: process.env.secret || config.passport.secret
 }
 
 const authLogin = new JWTStrategy(jwtOpt, async (payload, done) => {

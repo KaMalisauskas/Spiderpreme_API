@@ -44,7 +44,8 @@ UserSchema.methods = {
         return compareSync(password, this.password)
     },
     createToken() {
-        return jwt.sign({_id: this._id}, CONFIG.passport.secret)
+        let secret = process.env.secret || CONFIG.passport.secret
+        return jwt.sign({_id: this._id}, secret)
     },
     toAuthJson() {
         return {
