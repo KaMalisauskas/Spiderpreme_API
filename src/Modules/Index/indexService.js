@@ -14,8 +14,8 @@ class MainService {
     addRequest({username, url, keyword, email}) {
         return RequestModel.create({username, url, keyword, email})
     }
-    deleteRequest(id) {
-        return RequestModel.findOneAndRemove({_id: id})
+    deleteRequest(username) {
+        return RequestModel.findOneAndRemove({username})
     }
 
     async addReq({id, url, keyword}) {
@@ -34,10 +34,10 @@ class MainService {
         }
     }
 
-    async deleteReq({id}) {
+    async deleteReq({username}) {
         try{
-            if(!id) throw new TypeError('No id submitted')
-            return this.deleteRequest(id)
+            if(!username) throw new TypeError('No id submitted')
+            return this.deleteRequest(username)
         } catch (err) {
             throw err
         }
