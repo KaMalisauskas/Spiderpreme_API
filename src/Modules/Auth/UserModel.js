@@ -2,7 +2,7 @@ import mongoose, {Schema} from "mongoose"
 import {hashSync, compareSync} from "bcrypt-nodejs"
 import jwt from "jsonwebtoken"
 import UniqueValidator from "mongoose-unique-validator"
-// import CONFIG from "../../../config.json"
+import CONFIG from "../../../config.json"
 
 const UserSchema = new Schema({
     username: {
@@ -44,9 +44,8 @@ UserSchema.methods = {
         return compareSync(password, this.password)
     },
     createToken() {
-        let secret = process.env.secret
-            // || CONFIG.passport.secret
-        return jwt.sign({_id: this._id}, secret)
+        let secret = process.env.secret || CONFIG.passport.secret
+        return jwt.sign({_id: this._id}, CONFIG.passport.secret)
     },
     toAuthJson() {
         return {

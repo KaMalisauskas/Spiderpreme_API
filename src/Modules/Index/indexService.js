@@ -22,7 +22,6 @@ class MainService {
         try {
             const USERDATA = await this.userExists(id)
             if (!USERDATA) throw new Error(`User doesn't exist`)
-            console.log(await this.findReqByUser(USERDATA.username))
             if ((await this.findReqByUser(USERDATA.username)).length) throw new Error('User already has a request!')
 
             if (!url || !keyword || !id) throw new TypeError('Not all fields submitted')
