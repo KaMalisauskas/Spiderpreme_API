@@ -36,6 +36,7 @@ export const DELETEREQ = async (req, res) => {
 export const GETALLREQ = async (req, res) => {
     try{
         const GET = await MainService.getAllReq();
+        Helper.successHandler(GET, res)
     }catch(err) {
         Helper.errodHandler(err, 500, res)
     }
