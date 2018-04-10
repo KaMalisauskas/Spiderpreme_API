@@ -17,6 +17,9 @@ class MainService {
     deleteRequest(username) {
         return RequestModel.findOneAndRemove({username})
     }
+    getAllRequests() {
+        return RequestModel.find*
+    }
 
     async addReq({id, url, keyword}) {
         try {
@@ -39,6 +42,14 @@ class MainService {
             if(!username) throw new TypeError('No id submitted')
             return this.deleteRequest(username)
         } catch (err) {
+            throw err
+        }
+    }
+
+    async getAllReq() {
+        try{
+            return this.getAllReq();
+        }catch(err) {
             throw err
         }
     }

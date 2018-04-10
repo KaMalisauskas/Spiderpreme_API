@@ -9,7 +9,7 @@ export const GETREQ = async (req, res) => {
         if(!USERREQUESTS.length) throw new Error('User req not found');
         Helper.successHandler(USERREQUESTS, res)
     }catch (err) {
-        Helper.errodHandler(err, 400, res)
+        Helper.errodHandler(err, 500, res)
     }
 }
 
@@ -19,7 +19,7 @@ export const ADDREQ = async (req, res) => {
         if(!ADD) throw new Error('Something went wrong')
         Helper.successHandler(ADD, res)
     } catch (err) {
-        Helper.errodHandler(err, 400, res)
+        Helper.errodHandler(err, 500, res)
     }
 }
 
@@ -29,6 +29,14 @@ export const DELETEREQ = async (req, res) => {
         if(!DELETE) throw new Error(`Request was not deleted`)
         Helper.successHandler(DELETE, res)
     }catch (err) {
-        Helper.errodHandler(err, 400, res)
+        Helper.errodHandler(err, 500, res)
+    }
+}
+
+export const GETALLREQ = async (req, res) => {
+    try{
+        const GET = await MainService.getAllReq();
+    }catch(err) {
+        Helper.errodHandler(err, 500, res)
     }
 }

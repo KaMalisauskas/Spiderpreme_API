@@ -5,7 +5,7 @@ const USERNAME = process.env.username
     // ||config.mongoose.username
 const PASSWORD = process.env.password
     // || config.mongoose.password
-const URL = `mongodb://${USERNAME}:${PASSWORD}@ds229909.mlab.com:29909/spiderpreme`
+const URL = `mongodb://${USERNAME}:${PASSWORD}@ds159254.mlab.com:59254/spiderpreme_bot`
 
 const CONNECT = mongoose.connect(URL, (err) => {
     if(err) console.log(`Error in mongoose: ${String(err)}`)
