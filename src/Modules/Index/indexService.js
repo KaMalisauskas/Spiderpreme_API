@@ -18,7 +18,7 @@ class MainService {
         return RequestModel.findOneAndRemove({username})
     }
     getAllRequests() {
-        return RequestModel.find*
+        return RequestModel.find()
     }
 
     async addReq({id, url, keyword}) {
@@ -48,7 +48,7 @@ class MainService {
 
     async getAllReq() {
         try{
-            return this.getAllReq();
+            return this.getAllRequests();
         }catch(err) {
             throw err
         }
@@ -58,6 +58,3 @@ class MainService {
 
 
 export default new MainService()
-
-
-
